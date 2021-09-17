@@ -22,3 +22,17 @@ wmts-to-mbtiles --layer 'liikennevirasto:Rannikkokartat public' --zoom 15 --outp
 gdaladdo -r cubic yleiskartat.mbtiles 2 4 8 16 32 64
 gdaladdo -r cubic rannikkokartat.mbtiles 2 4 8 16
 ```
+
+## s3upload.js
+
+Purkaa mbtiles-karttatiedoston AWS S3:een TMS-hakemistopuuksi. Anna AWS-parametrit ympäristömuuttujina:
+
+ * `AWS_S3_ACCESSKEYID`
+ * `AWS_SECRET_ACCESS_KEY`
+ * `AWS_S3_REGION` (esim. `eu-central-1`)
+ * `AWS_S3_BUCKET` (esim. `tiles.mydomain.com`)
+ * `AWS_S3_PREFIX`, joko tyhjä tai polku, jossa päättyvä / (esim. `merikartta/`)
+
+Komentoriviparametrit:
+
+ * `s3upload.js path/to/file.mbtiles`
